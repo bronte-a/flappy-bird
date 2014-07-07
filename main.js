@@ -28,7 +28,7 @@ var main_state = {
     },
 
     jump: function() {
-        this.bird.velocity.y = -350;
+        this.bird.body.velocity.y = -350;
     },
 
     restart_game: function() {
