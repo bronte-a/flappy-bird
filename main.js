@@ -6,10 +6,16 @@ var main_state = {
 
     preload: function() { 
 		// Function called first to load all the assets
+		this.game.stage.backgroundColor = '#66ccff';
+
+		this.game.load.image('bird', 'assets/bird.png')
     },
 
     create: function() { 
-    	// Fuction called after 'preload' to setup the game    
+    	// Fuction called after 'preload' to setup the game
+    	this.bird = this.game.add.sprite(100, 245, 'bird');
+
+    	this.bird.body.gravity.y = 1000; 
     },
     
     update: function() {
