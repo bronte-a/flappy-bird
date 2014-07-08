@@ -39,7 +39,7 @@ var main_state = {
         // Function called 60 times per second
         if (this.bird.inWorld == false)
             this.restart_game();
-        
+
         this.game.physics.overlap(this.bird, this.pipes, this.restart_game, null, this); 
     },
 
@@ -70,7 +70,7 @@ add_row_of_pipes: function() {
     var hole = Math.floor(Math.random()*5)+1;
 
     for (var i = 0; i < 8; i++)
-        if (i != hole && i != hole +1) 
+        if (i != hole && i != hole +3) 
             this.add_one_pipe(400, i*60+10);   
 
     this.score += 1;  
