@@ -5,6 +5,7 @@ var play_state = {
     create: function() { 
 
               game.add.sprite(0, 0, 'background');
+              game.add.audio('dance');
 
         var space_key = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
         space_key.onDown.add(this.jump, this); 
