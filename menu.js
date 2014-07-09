@@ -15,8 +15,8 @@ var menu_state = {
         var x = game.world.width/2, y = game.world.height/2;
 
         // Adding a text centered on the screen
-        var text = this.game.add.text(x, y-90, "Press space to start!", style);
-        text.anchor.setTo(0.7, 0.7); 
+        var text = this.game.add.text(x, y-200, "Press space to start!", style);
+        text.anchor.setTo(0.5, 0.7); 
 
         // If the user already played
         if (score > 0) {
