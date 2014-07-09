@@ -1,7 +1,7 @@
 var menu_state = {  
     create: function() {
 
-        game.add.sprite(0, 0, 'main');
+        game.add.sprite(50, 90, 'main');
 
 
         // Call the 'start' function when pressing the spacebar
