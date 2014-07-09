@@ -3,6 +3,8 @@ var play_state = {
     // No more 'preload' function, since it is already done in the 'load' state
 
     create: function() { 
+        // Display background
+     this.bg= this.game.add.tileSprite(0, 0, game.stage.bounds.width, game.cache.getImage('background').height, 'background');
         var space_key = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
         space_key.onDown.add(this.jump, this); 
 
