@@ -11,7 +11,7 @@ var menu_state = {
         space_key.onDown.add(this.start, this); 
 
         // Defining variables
-        var style = { font: "25px Arial", fill: "#fc85af" };
+        var style = { font: "25px Arial", fill: "#000" };
         var x = game.world.width/2, y = game.world.height/2;
 
         // Adding a text centered on the screen
