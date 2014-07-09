@@ -5,7 +5,8 @@ var main_state = {
     preload: function() { 
         this.game.stage.backgroundColor = '#71c5cf';
         this.game.load.image('bird', 'assets/bird.png');  
-        this.game.load.image('pipe', 'assets/pipe.png');      
+        this.game.load.image('pipe', 'assets/pipe.png'); 
+        this.game.load.audio('jump', 'assets/jump.wav');       
     },
 
     create: function() { 
@@ -24,19 +25,26 @@ var main_state = {
         this.label_score = this.game.add.text(20, 20, "0", style);  
 
         this.bird.anchor.setTo(-0.2, 0.5);  
+
+        this.jump_sound = this.game.add.audio('jump');  
     },
 
     update: function() {
         if (this.bird.inWorld == false)
             this.restart_game(); 
 
-        this.game.physics.overlap(this.bird, this.pipes, this.restart_game, null, this);
+        this.game.physics.overlap(this.bird, this.pipes, this.hit_pipe, null, this);  
 
         if (this.bird.angle < 20)  
         this.bird.angle += 1;      
     },
 
     jump: function() {
+
+        if (this.bird.alive == false)  
+    return; 
+
+
         this.bird.body.velocity.y = -350;
 
         // create an animation on the bird
@@ -47,6 +55,8 @@ var main_state = {
 
         // And start the animation
         animation.start();  
+
+        this.jump_sound.play();  
 
 
     },
@@ -73,6 +83,25 @@ var main_state = {
         this.score += 1;
         this.label_score.content = this.score;  
     },
+
+    hit_pipe: function() {  
+    // If the bird has already hit a pipe, we have nothing to do
+    if (this.bird.alive == false)
+        return;
+
+    // Set the alive property of the bird to false
+    this.bird.alive = false;
+
+    // Prevent new pipes from appearing
+    this.game.time.events.remove(this.timer);
+
+    // Go through all the pipes, and stop their movement
+    this.pipes.forEachAlive(function(p){
+        p.body.velocity.x = 0;
+    }, this);
+},
+
+
 };
 
 game.state.add('main', main_state);  
